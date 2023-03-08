@@ -1,0 +1,122 @@
+{
+  "name": "second-microfront",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/second-microfront/src",
+  "prefix": "modulefederation",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/second-microfront",
+        "index": "apps/second-microfront/src/index.html",
+        "main": "apps/second-microfront/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/second-microfront/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/second-microfront/src/favicon.ico",
+          "apps/second-microfront/src/assets"
+        ],
+        "styles": ["apps/second-microfront/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/second-microfront/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/second-microfront/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "second-microfront:build:production"
+        },
+        "development": {
+          "browserTarget": "second-microfront:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "second-microfront:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/second-microfront/**/*.ts",
+          "apps/second-microfront/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/second-microfront/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "second-microfront:build",
+        "port": 4202
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "second-microfront:build:development"
+        },
+        "production": {
+          "buildTarget": "second-microfront:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,122 @@
+{
+  "name": "first-microfront",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/first-microfront/src",
+  "prefix": "modulefederation",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/first-microfront",
+        "index": "apps/first-microfront/src/index.html",
+        "main": "apps/first-microfront/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/first-microfront/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/first-microfront/src/favicon.ico",
+          "apps/first-microfront/src/assets"
+        ],
+        "styles": ["apps/first-microfront/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/first-microfront/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/first-microfront/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "first-microfront:build:production"
+        },
+        "development": {
+          "browserTarget": "first-microfront:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "first-microfront:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/first-microfront/**/*.ts",
+          "apps/first-microfront/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/first-microfront/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "first-microfront:build",
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "first-microfront:build:development"
+        },
+        "production": {
+          "buildTarget": "first-microfront:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
