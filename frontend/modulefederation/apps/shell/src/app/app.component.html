@@ -1,6 +1,26 @@
-<ul class="remote-menu">
+<!-- <ul class="remote-menu">
   <li><a routerLink="/">Home</a></li>
   <li><a routerLink="first-microfront">FirstMicrofront</a></li>
   <li><a routerLink="second-microfront">SecondMicrofront</a></li>
-</ul>
-<router-outlet></router-outlet>
+</ul> -->
+
+<!-- <modulefederation-navbar></modulefederation-navbar>
+<router-outlet></router-outlet> -->
+
+
+<div fxLayout = "row wrap" fxLayoutAlign = "center center" style="height:100%">
+  <div fxFlex = "80%" fxFlex.lt-md = "100%" style="height:100%">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+      <modulefederation-sidenav (sidenavClose)="sidenav.close()"></modulefederation-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <modulefederation-navbar (sidenavToggle)="sidenav.toggle()"></modulefederation-navbar>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  </div>
+</div>

@@ -19,6 +19,10 @@ export const appRoutes: Route[] = [
   },
   {
     path: '',
-    component: NxWelcomeComponent,
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
+  // {
+  //   path: '',
+  //   component: NxWelcomeComponent,
+  // },
 ];
