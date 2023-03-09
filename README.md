@@ -1,6 +1,6 @@
 # NX Angular Module Federation with Docker 
 ## How to start app?
-Inside `modulefederation` folder
+Without Docker, inside `modulefederation` folder run:
 ```bash
 npm i
 ```
@@ -9,6 +9,19 @@ npm i
 npx nx serve shell --devRemotes="first-microfront, second-microfront"
 ``` 
 possible without *devRemotes* but it won't rerender when you change something on some microfront(not *shell*)
+
+---
+\
+With Docker, inside `docker` folder run:
+```bash
+docker compose -f modulefederation-microfrontends.yml up -d
+``` 
+Other usefull commands:
+```bash
+docker compose -f modulefederation-microfrontends.yml down
+docker compose -f modulefederation-microfrontends.yml build
+``` 
+Also you can build each microfrontend separatetly using other docker-composes inside `docker` folder.
 
 ## Module Federation Setup
 - Check official [NX documentation](https://nx.dev/recipes/module-federation/dynamic-module-federation-with-angular#advanced-angular-micro-frontends-with-dynamic-module-federation)
@@ -56,6 +69,27 @@ For libraries its necessary to add new exports in `"index.ts"` for each new clas
 
 Example of displaying remote inside it's host.
 ![Shell](/readme-images/shell.png)
-![Micrfront1](/readne-images/microfront1.png)
+![Microfront1](/readne-images/microfront1.png)
 
 ## Dockerization of Module Federation
+
+- Make docker-compose.yml file
+- Add Dockerfile to each microfrontend(host and remotes)
+- Add nginx.conf file to each microfrontend
+
+### Possible errors:
+`TypeError: Failed to fetch dynamically imported module` because of
+
+ `Expected a JavaScript module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.` or CORS.
+
+### How to fix it?
+In `nginx.conf` you have to add MIME types and header for CORS:
+![DockerFix](/readme-images/dockerFix.png)
+For some reason `include mime.types` didn't work so i explicitly imported all types in `nginx.conf` and added *mjs* for *JavaScript* and that one line for CORS.
+
+[Stackoverflow](https://stackoverflow.com/questions/75594711/how-to-fix-server-responded-with-a-mime-type-of-text-plain/75604681#75604681)
+
+If you added some services/models inside lib/shared you will have to build and up libs also:
+```bash
+docker compose -f modulefederation-libs.yml up -d
+```

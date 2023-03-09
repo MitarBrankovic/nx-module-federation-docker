@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+#----------------------------------------------------------------
+  modulefederation-libs:
+    build: 
+      context: ./../frontend/modulefederation
+      dockerfile: libs/shared/Dockerfile
+    container_name: modulefederation-libs
+    restart: on-failure
+    expose:
+      - '4204'
+    ports:
+      - "4204:80"
+    networks:
+      - modulefederation-network
+#----------------------------------------------------------------
+networks:
+  modulefederation-network:

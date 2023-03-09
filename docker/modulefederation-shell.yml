@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+#----------------------------------------------------------------
+  modulefederation-shell:
+    build: 
+      context: ./../frontend/modulefederation
+      dockerfile: apps/shell/Dockerfile
+    container_name: modulefederation-shell
+    restart: on-failure
+    expose:
+      - '4200'
+    ports:
+      - "4200:80"
+    networks:
+      - modulefederation-network
+#----------------------------------------------------------------
+networks:
+  modulefederation-network:

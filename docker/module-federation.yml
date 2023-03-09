@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+#----------------------------------------------------------------
+  module-federation:
+    image: wedoreg01.azurecr.io/module-federation:1.0.0
+    build: ./../frontend/modulefederation
+    container_name: module-federation
+    restart: on-failure
+    expose:
+      - '4203'
+    ports:
+      - "4203:80"
+    networks:
+      - modulefederation-network
+#----------------------------------------------------------------
+networks:
+  modulefederation-network:

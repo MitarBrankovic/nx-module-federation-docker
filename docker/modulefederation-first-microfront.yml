@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+#----------------------------------------------------------------
+  modulefederation-first-microfront:
+    build: 
+      context: ./../frontend/modulefederation
+      dockerfile: apps/first-microfront/Dockerfile
+    container_name: modulefederation-first-microfront
+    restart: on-failure
+    expose:
+      - '4201'
+    ports:
+      - "4201:80"
+    networks:
+      - modulefederation-network
+#----------------------------------------------------------------
+networks:
+  modulefederation-network:

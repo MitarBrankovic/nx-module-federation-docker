@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+#----------------------------------------------------------------
+  modulefederation-shell:
+    image: wedoreg01.azurecr.io/modulefederation-shell:1.0.0
+    build: 
+      context: ./../frontend/modulefederation
+      dockerfile: apps/shell/Dockerfile
+    container_name: modulefederation-shell
+    restart: on-failure
+    expose:
+      - '4200'
+    ports:
+      - "4200:80"
+    networks:
+      - modulefederation-network
+
+#----------------------------------------------------------------
+  modulefederation-first-microfront:
+    image: wedoreg01.azurecr.io/modulefederation-first-microfront:1.0.0
+    build: 
+      context: ./../frontend/modulefederation
+      dockerfile: apps/first-microfront/Dockerfile
+    container_name: modulefederation-first-microfront
+    restart: on-failure
+    expose:
+      - '4201'
+    ports:
+      - "4201:80"
+    networks:
+      - modulefederation-network
+#----------------------------------------------------------------
+  modulefederation-second-microfront:
+    image: wedoreg01.azurecr.io/modulefederation-second-microfront:1.0.0
+    build: 
+      context: ./../frontend/modulefederation
+      dockerfile: apps/second-microfront/Dockerfile
+    container_name: modulefederation-second-microfront
+    restart: on-failure
+    expose:
+      - '4202'
+    ports:
+      - "4202:80"
+    networks:
+      - modulefederation-network
+#----------------------------------------------------------------
+networks:
+  modulefederation-network:
