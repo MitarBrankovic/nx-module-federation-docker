@@ -69,7 +69,7 @@ For libraries its necessary to add new exports in `"index.ts"` for each new clas
 
 Example of displaying remote inside it's host.
 ![Shell](/readme-images/shell.png)
-![Microfront1](/readne-images/microfront1.png)
+![Microfront1](/readme-images/microfront1.png)
 
 ## Dockerization of Module Federation
 
@@ -85,6 +85,7 @@ Example of displaying remote inside it's host.
 ### How to fix it?
 In `nginx.conf` you have to add MIME types and header for CORS:
 ![DockerFix](/readme-images/dockerFix.png)
+
 For some reason `include mime.types` didn't work so i explicitly imported all types in `nginx.conf` and added *mjs* for *JavaScript* and that one line for CORS.
 
 [Stackoverflow](https://stackoverflow.com/questions/75594711/how-to-fix-server-responded-with-a-mime-type-of-text-plain/75604681#75604681)
