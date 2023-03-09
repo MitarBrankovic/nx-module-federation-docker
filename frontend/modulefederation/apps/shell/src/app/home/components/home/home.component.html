@@ -1,1 +1,86 @@
-<p>home works!</p>
+<section fxLayout = "column" fxFlexAlign = "stretch">
+    <div fxFlexAlign = "center">
+      <p>Welcome to NX Module Federation Angular app</p>
+    </div>
+  
+    <p>In this application we are going to work with:</p>
+  
+    <mat-tab-group (selectedTabChange)="executeSelectedChange($event)">
+      <mat-tab label = "NX Module federation">
+        <p>We will explore the Nx Module Federation feature, which allows you to share code and components between different microfrontends. We'll start by creating a basic Nx workspace and then use the Module Federation plugin to share modules between two different applications. We'll also demonstrate how to use dynamic remote modules, which can be loaded on-demand, and show you how to configure shared libraries and runtime sharing.</p>
+        <br>
+        <div class="card-container" fxLayout="row wrap" fxLayout.lt-sm="column">
+          <mat-card class="card-item" *ngFor="let item of nxs; let i = index">
+            <mat-card-header>
+              <mat-card-title>{{item.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <label>{{item.content}}</label>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label = "Kafka Message Broker">
+        <p>We are going to use use Kafka, a distributed message broker, to build reliable and scalable distributed systems. We'll cover the basics of Kafka, including topics, partitions, and brokers, and show you how to create a simple producer and consumer using the Java API.</p>
+        <div class="card-container" fxLayout="row wrap" fxLayout.lt-sm="column">
+          <mat-card class="card-item" *ngFor="let item of kafkas; let i = index">
+            <mat-card-header>
+              <mat-card-title>{{item.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <label>{{item.content}}</label>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+
+      <mat-tab label = "Docker">
+        <p>We will learn how to use Docker to containerize your applications. Docker is a platform that allows you to package your applications into containers, which can then be run anywhere, regardless of the underlying system. We'll cover the basics of Docker, including images, containers, Docker Compose, and show you how to create your own Docker images using Dockerfiles.</p>
+        <div class="card-container" fxLayout="row wrap" fxLayout.lt-sm="column" >
+          <mat-card class="card-item" *ngFor="let item of dockers; let i = index">
+            <mat-card-header>
+              <mat-card-title>{{item.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <label>{{item.content}}</label>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </section>
+
+  <section class="technologies-section">
+    <h2 class="section-header">Technologies Used</h2>
+    <div class="technologies-icons">
+      <div class="icon-container">
+        <img src="assets/images/docker.png" alt="Docker Icon">
+        <p>Docker</p>
+      </div>
+      <div class="icon-container">
+        <img src="assets/images/kafka.png" alt="Kafka Icon">
+        <p>Kafka</p>
+      </div>
+      <div class="icon-container">
+        <img src="assets/images/angular.png" alt="Angular Icon">
+        <p>Angular</p>
+      </div>
+      <div class="icon-container">
+        <img src="assets/images/spring.png" alt="Spring Boot Icon">
+        <p>Spring Boot</p>
+      </div>
+      <div class="icon-container">
+        <img src="assets/images/nx.png" alt="Spring Boot Icon">
+        <p>NX</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2023</p>
+      <p>Made with ❤️ by Mitar Brankovic</p>
+    </div>
+  </footer>

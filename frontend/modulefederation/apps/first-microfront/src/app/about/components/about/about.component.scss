@@ -1,0 +1,51 @@
+.contact-info-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .name {
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .job-title {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  
+  .contact-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+  }
+  
+  .contact-label {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .contact-label:hover {
+    cursor: pointer;
+    color: paleturquoise;
+  }
+  
+  .mat-list-item {
+    display: flex;
+    align-items: center;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }

@@ -1,0 +1,109 @@
+section div p, mat-card-title {
+    color: #3f51b5;
+    font-size: 30px;
+    text-shadow: 2px 3px 5px grey;
+    margin: 30px 0;
+  }
+  
+section div + p {
+  color: #3f51b5;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.card-item {
+  width: calc(33.33% - 10px);
+  margin-bottom: 20px;
+}
+
+mat-card-content {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: #665;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 599px) {
+  .card-item {
+    width: 100%;
+  }
+}
+
+mat-tab-group {
+  text-align: center;
+}
+
+mat-tab-group p {
+  padding-top: 20px;
+}
+
+//############################ICONS############################################
+.technologies-section {
+  padding: 50px 0;
+  background-color: #e2e2e2;
+  margin-top: 40px;
+}
+
+.section-header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.technologies-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.icon-container img {
+  width: 100px;
+  height: 100px;
+}
+
+.icon-container p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+//#############################################################################
+//#############################FOOTER##########################################
+footer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
+  color: black;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #665;
+}
+
+.footer-content p {
+  margin: 0 10px;
+}
+//#############################################################################
+

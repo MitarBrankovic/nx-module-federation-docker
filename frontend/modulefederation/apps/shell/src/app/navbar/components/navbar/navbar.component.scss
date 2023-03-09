@@ -5,6 +5,7 @@ a {
   
   a:hover, a:active {
     color: lightgray;
+    border-bottom: 3px solid paleturquoise;
   }
   
   .navigation-items {
@@ -12,9 +13,24 @@ a {
     padding: 0;
     margin: 0;
   }
+
+  .menuButton {
+    border:none;
+    background-color: transparent;
+    color: white;
+    
+  }
+
+  .menuButton:hover, .menuButton:active {
+    color: lightgray;
+  }
   
   mat-toolbar {
     border-radius: 3px;
+  }
+
+  .mat-toolbar.mat-primary {
+    background-image: linear-gradient(to right, #8891c2, #303f9f);
   }
   
   @media(max-width: 959px){
